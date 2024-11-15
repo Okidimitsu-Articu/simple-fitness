@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aloe Vera World</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        h1 {
+            font-size: 2.5em;
+        }
+
+        section {
+            margin: 20px 0;
+        }
+
+        footer {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+        }
+
+        .button:hover {
+            background-color: #45a049;
+        }
+
+        .calculator {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        select, button {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        #result {
+            font-size: 18px;
+            padding: 15px;
+            background-color: #e0f7e9;
+            border-left: 5px solid #4CAF50;
+            display: none;
+        }
+
+        /* Hide all sections except Home by default */
+        #benefitsSection, #calculatorSection {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Aloe Vera World</h1>
+        <nav>
+            <ul>
+                <li><a href="#" onclick="showSection('homeSection')">Home</a></li>
+                <li><a href="#" onclick="showSection('benefitsSection')">Aloe Vera Benefits</a></li>
+                <li><a href="#" onclick="showSection('calculatorSection')">Benefits Calculator</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Home Section -->
+    <section id="homeSection">
+        <h2>Welcome to Aloe Vera World</h2>
+        <p>Discover the incredible benefits of Aloe Vera. Learn how it helps in skincare, haircare, digestive health, and more!</p>
+        <a href="#" class="button" onclick="showSection('benefitsSection')">Learn More</a>
+    </section>
+
+    <!-- Aloe Vera Benefits Section -->
+    <section id="benefitsSection">
+        <h2>Aloe Vera Benefits</h2>
+        <p>Aloe Vera is a miracle plant known for its numerous health and beauty benefits:</p>
+        <ul>
+            <li><strong>Skincare:</strong> Soothes burns, moisturizes skin, and promotes healing.</li>
+            <li><strong>Haircare:</strong> Reduces dandruff, promotes hair growth, and soothes the scalp.</li>
+            <li><strong>Digestive Health:</strong> Aloe Vera juice helps with digestion and gut health.</li>
+            <li><strong>Anti-Inflammatory:</strong> Reduces inflammation and helps with joint pain.</li>
+            <li><Strong>Immune system:</Strong> Aloe vera products help raise white blood cells, which defend the body against infections. This strengthens the immune system, helping the body stay healthy and fight off sickness.</li>
+               
+        </ul>
+    </section>
+
+    <!-- Benefits Calculator Section -->
+    <section id="calculatorSection" class="calculator">
+        <h2>Aloe Vera Benefits Calculator</h2>
+
+        <label for="need">Select Your Need:</label>
+        <select id="need">
+            <option value="">-- Select --</option>
+            <option value="skin">Skin Care</option>
+            <option value="digestive">Digestive Health</option>
+            <option value="hair">Hair Care</option>
+            <option value="anti-inflammatory">Anti-Inflammatory</option>
+            <option value="Immune system">Immune system</option>
+        </select>
+        <button onclick="calculateBenefits()">Show Benefits</button>
+
+        <div id="result"></div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Aloe Vera World. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        // Function to show specific section
+        function showSection(sectionId) {
+            document.getElementById('homeSection').style.display = 'none';
+            document.getElementById('benefitsSection').style.display = 'none';
+            document.getElementById('calculatorSection').style.display = 'none';
+
+            document.getElementById(sectionId).style.display = 'block';
+        }
+
+        // Function to calculate Aloe Vera benefits
+        function calculateBenefits() {
+            const need = document.getElementById("need").value;
+            const resultDiv = document.getElementById("result");
+            let resultText = '';
+
+            switch(need) {
+                case 'skin':
+                    resultText = 'Aloe Vera is excellent for soothing and moisturizing the skin. It helps heal burns, cuts, and provides anti-aging benefits!';
+                    break;
+                case 'digestive':
+                    resultText = 'Aloe Vera juice can aid digestion, relieve constipation, and promote a healthy gut!';
+                    break;
+                case 'hair':
+                    resultText = 'Aloe Vera can reduce dandruff, promote hair growth, and soothe scalp irritation!';
+                    break;
+                case 'anti-inflammatory':
+                    resultText = 'Aloe Vera has anti-inflammatory properties, making it great for reducing swelling, pain, and joint discomfort!';
+                    break;
+                    case 'Immune system':
+                    resultText = 'Aloe vera products help raise white blood cells, which defend the body against infections. This strengthens the immune system, helping the body stay healthy and fight off sickness.';
+                    break;
+                default:
+                    resultText = 'Please select a valid option to see the benefits.';
+            }
+
+            resultDiv.innerHTML = resultText;
+            resultDiv.style.display = 'block';
+        }
+    </script>
+</body>
+</html>
